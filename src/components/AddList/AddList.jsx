@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import classes from "./AddList.module.css";
-import { addTodo } from "../../store/action/todo-slice";
+// import { addTodo } from "../../store/action/todo-slice";
 import { isLogout } from "../../store/action/auth-slice";
 
 const AddList = () => {
