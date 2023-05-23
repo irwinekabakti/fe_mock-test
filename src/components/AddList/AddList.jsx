@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import classes from "./AddList.module.css";
-// import { addTodo } from "../../store/action/todo-slice";
+import { addTodo } from "../../store/action/todo-slice";
 import { isLogout } from "../../store/action/auth-slice";
 
 const AddList = () => {
@@ -28,6 +28,18 @@ const AddList = () => {
       dispatch(isLogout(false));
       navigate("/");
     }, 2500);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newTodo = {
+      userId: Date.now(),
+      id: Date.now(),
+      title: todo,
+      completed: false,
+    };
+    dispatch(addTodo(newTodo));
+    setTodo("");
   };
 
   return (
@@ -69,7 +81,10 @@ const AddList = () => {
         </Button>
       </div>
       <hr className="mt-4" />
-      <Form className="mb-4 mt-4" style={{ margin: "0 auto" }}>
+      <Form
+        onSubmit={handleSubmit}
+        className="mb-4 mt-4"
+        style={{ margin: "0 auto" }}>
         <div className="d-flex justify-content-center">
           <Form.Group style={{ width: "500px" }}>
             <Form.Control
