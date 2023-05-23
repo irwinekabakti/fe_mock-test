@@ -5,7 +5,9 @@ import STATUS from "../../utils/StatusCode";
 
 const initialState = {
   status: null,
-  todoList: [],
+  todoList: localStorage.getItem("key")
+    ? JSON.parse(localStorage.getItem("key"))
+    : [],
 };
 
 const dataTodoAPI = createAsyncThunk("get/todo", async () => {
@@ -24,6 +26,35 @@ const todoSlice = createSlice({
   reducers: {
     getData(state, action) {
       state.todoList = action.payload;
+      /*
+      state.todoList = [
+        ...action.payload,
+        ...JSON.parse(localStorage.getItem("key")),
+      ];
+      */
+    },
+    addTodo(state, action) {
+      // localStorage.setItem("todoToken", action.payload);
+      // state.todoList.unshift(action.payload);
+
+      const newState = state.todoList.map((item) => item);
+      newState.unshift(action.payload);
+
+      localStorage.setItem("key", JSON.stringify(newState));
+      state.todoList = newState;
+
+      /*
+      const stateList = state.todoList.map((item) => item);
+      const localData = localStorage.getItem("key")
+        ? JSON.parse(localStorage.getItem("key"))
+        : [];
+      localData.push(action.payload);
+      stateList.push(action.payload);
+      console.log(localData);
+
+      localStorage.setItem("key", JSON.stringify(localData));
+      state.todoList = stateList;
+      */
     },
     removeTodo(state, action) {
       state.todoList = state.todoList.filter(
@@ -52,7 +83,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const { getData, removeTodo, updateTodo } = todoSlice.actions;
+export const { getData, removeTodo, updateTodo, addTodo } = todoSlice.actions;
 
 export { dataTodoAPI };
 

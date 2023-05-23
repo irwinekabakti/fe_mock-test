@@ -1,0 +1,13 @@
+.errorApp {
+  width: 700px;
+  background-color: white;
+  padding: 50px;
+  box-shadow: 0 0 5px 5px #bfbfbf;
+  border-radius: 5px;
+  margin: 150px auto;
+  overflow: hidden;
+}
+
+.iconBtn:hover {
+  background-color: #fff;
+}

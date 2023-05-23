@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Button, Container, Modal, Table, Badge } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Container, Table, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   dataTodoAPI,
