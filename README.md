@@ -2,7 +2,7 @@
 
 ## Kegunaan JSON pada REST API
 
-JSON adalah merupakan sebuah format yang digunakan untuk menyimpan, membaca, serta menukar informasi dari web server sehingga dapat dibaca oleh para pengguna. Biasanya, file JSON berisikan teks dan file berekstensi .json
+JSON merupakan sebuah format yang digunakan untuk menyimpan, membaca, serta menukar informasi dari web server sehingga dapat dibaca oleh para pengguna. Biasanya, file JSON berisikan teks dan file berekstensi .json
 
 JSON sendiri terdiri dari dua struktur. Struktur Pertama adalah kumpulan value yang saling berpasangan contohnya seperti object. Struktur kedua adalah kumpulan value yang berurutan seperti misalnya array. Selain itu, JSON dapat digunakan oleh bahasa pemrograman lain seperti PHP, Python, C++, dan Ruby.
 
