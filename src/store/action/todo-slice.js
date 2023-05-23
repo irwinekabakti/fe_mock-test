@@ -8,6 +8,10 @@ const initialState = {
   todoList: localStorage.getItem("key")
     ? JSON.parse(localStorage.getItem("key"))
     : [],
+  /*
+  // cara 3
+  todoList: [],
+  */
 };
 
 const dataTodoAPI = createAsyncThunk("get/todo", async () => {
@@ -27,6 +31,7 @@ const todoSlice = createSlice({
     getData(state, action) {
       state.todoList = action.payload;
       /*
+      cara 3
       state.todoList = [
         ...action.payload,
         ...JSON.parse(localStorage.getItem("key")),
@@ -34,8 +39,11 @@ const todoSlice = createSlice({
       */
     },
     addTodo(state, action) {
-      // localStorage.setItem("todoToken", action.payload);
-      // state.todoList.unshift(action.payload);
+      /*
+      // cara 1
+      localStorage.setItem("key", JSON.stringify(action.payload));
+      state.todoList.unshift(action.payload);
+      */
 
       const newState = state.todoList.map((item) => item);
       newState.unshift(action.payload);
@@ -44,6 +52,7 @@ const todoSlice = createSlice({
       state.todoList = newState;
 
       /*
+      cara 3
       const stateList = state.todoList.map((item) => item);
       const localData = localStorage.getItem("key")
         ? JSON.parse(localStorage.getItem("key"))

@@ -27,7 +27,7 @@ const Error = () => {
             variant="outline-primary"
             className="fw-bold"
             onClick={backToHome}>
-            <FaArrowCircleLeft className={`${classes.iconBtn} me-2`} />
+            <FaArrowCircleLeft className="me-2" />
             Back to home
           </Button>
         </div>
