@@ -25,6 +25,18 @@ const todoSlice = createSlice({
     getData(state, action) {
       state.todoList = action.payload;
     },
+    removeTodo(state, action) {
+      state.todoList = state.todoList.filter(
+        (item) => item?.id !== action.payload
+      );
+    },
+    updateTodo(state, action) {
+      state.todoList = state.todoList.map((item) =>
+        item.id === action.payload
+          ? { ...item, completed: !item.completed }
+          : item
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(dataTodoAPI.pending, (state, action) => {
@@ -40,7 +52,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const { getData } = todoSlice.actions;
+export const { getData, removeTodo, updateTodo } = todoSlice.actions;
 
 export { dataTodoAPI };
 

@@ -1,17 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Modal, Table, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { dataTodoAPI } from "../../store/action/todo-slice";
+import {
+  dataTodoAPI,
+  removeTodo,
+  updateTodo,
+} from "../../store/action/todo-slice";
 import { FaCheck, FaTimes, FaUndo } from "react-icons/fa";
 
 const TodoItem = () => {
   const dispatch = useDispatch();
   const { todoList } = useSelector((state) => state.todo);
-  console.log("result", todoList);
 
   useEffect(() => {
     dispatch(dataTodoAPI());
   }, []);
+
+  const handlerDelete = (id) => {
+    dispatch(removeTodo(id));
+  };
+
+  const handlerUpdate = (id) => {
+    dispatch(updateTodo(id));
+  };
 
   return (
     <>
@@ -44,17 +55,23 @@ const TodoItem = () => {
                 </td>
                 <td className="col-lg-1">
                   {item.completed ? (
-                    <div className="text-secondary iconAction">
+                    <div
+                      className="text-secondary iconAction"
+                      onClick={() => handlerUpdate(item.id)}>
                       <FaUndo />
                     </div>
                   ) : (
-                    <div className="text-success iconAction">
+                    <div
+                      className="text-success iconAction"
+                      onClick={() => handlerUpdate(item.id)}>
                       <FaCheck />
                     </div>
                   )}
                 </td>
                 <td className="col-lg-1">
-                  <div className="text-danger iconClose">
+                  <div
+                    className="text-danger iconClose"
+                    onClick={() => handlerDelete(item.id)}>
                     <FaTimes />
                   </div>
                 </td>
